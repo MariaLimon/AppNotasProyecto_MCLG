@@ -44,6 +44,7 @@ namespace AppNotasProyecto_MCLG.VistaModelo
 			{
 				Titulo = parametrosRecibe.Titulo,
 				Descripcion = parametrosRecibe.Descripcion,
+				idNota = parametrosRecibe.idNota
 			};
 
 			var dataAccess = new Dnota();

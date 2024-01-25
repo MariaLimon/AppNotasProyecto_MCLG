@@ -58,19 +58,37 @@ namespace AppNotasProyecto_MCLG.VistaModelo
 		{
 			await Navigation.PushAsync(new EditarNota(parametros));
 		}
+		public async Task<bool> MostrarMenuEmergente()
+		{
+			var respuesta = await DisplayAlert("Eliminar nota", "¿Seguro que quiere eliminar esta nota?", "Aceptar", "Cancelar");
+			return respuesta;
+		}
+
+		bool _activadorAnimacionImg;
+		public bool ActivadorAnimacionImg
+		{
+			get { return _activadorAnimacionImg; }
+			set { SetValue(ref _activadorAnimacionImg, value); }
+		}
 		public async Task EliminrNota(Mnota1 notaTitulo)
 		{
-
-			var dataAccess = new Dnota();
-			var notaToDelete = _ListaNotas.FirstOrDefault(p => p.idNota == notaTitulo.idNota);
-
-			if (notaToDelete != null)
+			bool respuesta = await MostrarMenuEmergente();
+			if(respuesta != false)
 			{
-				await dataAccess.EliminarNota(notaToDelete.idNota);
-				_ListaNotas.Remove(notaToDelete);
+				ActivadorAnimacionImg = true;
+				var dataAccess = new Dnota();
+				var notaToDelete = _ListaNotas.FirstOrDefault(p => p.idNota == notaTitulo.idNota);
+
+				if (notaToDelete != null)
+				{
+					await dataAccess.EliminarNota(notaToDelete.idNota);
+					_ListaNotas.Remove(notaToDelete);
+				}
 			}
-
-
+			else
+			{
+				//nada
+			}
 		}
 
 

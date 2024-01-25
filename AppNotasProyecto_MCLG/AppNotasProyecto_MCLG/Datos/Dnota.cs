@@ -16,17 +16,12 @@ namespace AppNotasProyecto_MCLG.Datos
 	{
 		public async Task InsertarNota(Mnota1 parametros)
 		{
-			string nuevoIdNota = Guid.NewGuid().ToString();
 			await Cconexion.firebase
 				.Child("Nota")
-				.Child(nuevoIdNota)
 				.PostAsync(new Mnota1()
 				{
-
 					Titulo = parametros.Titulo,
-					Descripcion = parametros.Descripcion,
-					idNota = nuevoIdNota
-					
+					Descripcion = parametros.Descripcion
 				});
 		}
 
@@ -64,15 +59,15 @@ namespace AppNotasProyecto_MCLG.Datos
 
 		public async Task<bool> ActualizarNota(Mnota1 parametros)
 		{
-			var pokemonAEditar = (await Cconexion.firebase
+			var notaAEditar = (await Cconexion.firebase
 				.Child("Nota")
 				.OnceAsync<Mnota1>()).Where(p => p.Object.idNota == parametros.idNota).FirstOrDefault();
 
-			if (pokemonAEditar != null)
+			if (notaAEditar != null)
 			{
 				await Cconexion.firebase
 					.Child("Nota")
-					.Child(pokemonAEditar.Key)
+					.Child(notaAEditar.Key)
 					.PutAsync(new Mnota1()
 					{
 						Titulo = parametros.Titulo,

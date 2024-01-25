@@ -6,7 +6,7 @@
         <StackLayout Margin="10">
             <Entry Placeholder="Titulo"
                        FontAttributes="Bold"
-                       TextColor="#ffeb72"
+                       TextColor="Black"
                        Text="{Binding parametrosRecibe.Titulo}"
                        Keyboard="Text"
                        x:Name="entryTitulo"
@@ -15,12 +15,14 @@
             </Entry>
             <Editor Placeholder="Empiece a escribir"
                     AutoSize="TextChanges"
+                    HeightRequest="500"
                     Text="{Binding parametrosRecibe.Descripcion}">
 
             </Editor>
+            <Label Text="{Binding parametrosRecibe.idNota}"/>
             <Button Text="+"
                         HorizontalOptions="Center"
-                        BackgroundColor="#FEC100"
+                        BackgroundColor="Orange"
                         BorderColor="#FFE488"
                         BorderWidth="6"
                         CornerRadius="15"
