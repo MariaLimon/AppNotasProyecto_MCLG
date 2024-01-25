@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace AppNotasProyecto_MCLG.Modelo
+{
+	public class Mnota1
+	{
+		public string Titulo { get; set; }
+		public string Descripcion { get; set; }
+		public string idNota { get; set; }
+	}
+}

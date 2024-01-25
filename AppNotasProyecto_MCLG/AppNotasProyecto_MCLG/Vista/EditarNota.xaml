@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppNotasProyecto_MCLG.Vista.EditarNota">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Entry Placeholder="Titulo"
+                       FontAttributes="Bold"
+                       TextColor="#ffeb72"
+                       Text="{Binding parametrosRecibe.Titulo}"
+                       Keyboard="Text"
+                       x:Name="entryTitulo"
+                   FontSize="30">
+
+            </Entry>
+            <Editor Placeholder="Empiece a escribir"
+                    AutoSize="TextChanges"
+                    Text="{Binding parametrosRecibe.Descripcion}">
+
+            </Editor>
+            <Button Text="+"
+                        HorizontalOptions="Center"
+                        BackgroundColor="#FEC100"
+                        BorderColor="#FFE488"
+                        BorderWidth="6"
+                        CornerRadius="15"
+                        FontAttributes="Bold"
+                        FontSize="25"
+                        WidthRequest="60"
+                        HeightRequest="60"
+                        Command="{Binding ActualizarCommand}"/>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

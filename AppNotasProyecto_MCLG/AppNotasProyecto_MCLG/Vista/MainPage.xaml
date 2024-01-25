@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppNotasProyecto_MCLG.MainPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <StackLayout Background="#F7F7F7">
+        <Frame BackgroundColor="#2196F3" Padding="10" CornerRadius="0">
+            <Label Text="Notas" HorizontalTextAlignment="Center" TextColor="White" FontSize="25"/>
+        </Frame>
+        <SearchBar Placeholder="Buscar">
+
+        </SearchBar>
+        <CollectionView
+            ItemsSource="{Binding ListaNotas}"
+            Margin="0,0,0,0"
+            x:Name="collection">
+            
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 HorizontalItemSpacing="10"
+                                 Span="1"
+                                 VerticalItemSpacing="10"
+                                 />
+
+
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView Padding="10" >
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Eliminar" BackgroundColor="Red" Command="{Binding BindingContext.EliminarCommand, Source={x:Reference collection}}" CommandParameter="{Binding .}" />
+                                <SwipeItem Text="Editar" BackgroundColor="Orange" Command="{Binding BindingContext.ActualizarCommand, Source={x:Reference collection}}" CommandParameter="{Binding .}" />
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+
+                        <StackLayout Orientation="Vertical" Margin="15" >
+                            <Label Text="{Binding Titulo}" 
+                                   FontSize="20" 
+                                   FontAttributes="Bold"/>
+
+                            <Label Text="{Binding Descripcion}"
+                                   FontSize="15"></Label>
+                        </StackLayout>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            
+        </CollectionView>
+        
+
+        <Button Text="+"
+                HeightRequest="70"
+                WidthRequest="70"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                CornerRadius="50"
+                Margin="15"
+                FontSize="50"
+                FontAttributes="Bold"
+                BackgroundColor="#FFD755"
+                Command="{Binding IrRegistrocommand}"/>
+    </StackLayout>
+
+</ContentPage>
