@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppNotasProyecto_MCLG.MainPage"
+             xmlns:disparador="clr-namespace:AppNotasProyecto_MCLG.Trigger.Tnotas"
              NavigationPage.HasNavigationBar="False">
 
     <StackLayout Background="#F7F7F7">
@@ -32,11 +33,12 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <SwipeView Padding="5">
+
                         <SwipeView.LeftItems>
                             <SwipeItems>
                                 <SwipeItem Text="Eliminar" BackgroundColor="Red" Command="{Binding BindingContext.EliminarCommand, Source={x:Reference collection}}" CommandParameter="{Binding .}" />
                                 <SwipeItem Text="Editar" BackgroundColor="Orange" Command="{Binding BindingContext.ActualizarCommand, Source={x:Reference collection}}" CommandParameter="{Binding .}" />
-                                
+
                             </SwipeItems>
                         </SwipeView.LeftItems>
                         
@@ -48,11 +50,34 @@
                             <Label Text="{Binding Descripcion}"
                                    FontSize="15"/>
                         </StackLayout>
+
+                        <SwipeView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.EliminarCommand,
+                                        Source={x:Reference collection}}" CommandParameter="{Binding .}"/>
+                        </SwipeView.GestureRecognizers>
+
+                    
+
                     </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+            
         </CollectionView>
-        
+        <Label Text="{Binding Titulo}">
+            <Label.Triggers>
+                <MultiTrigger TargetType="Label">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition Binding="{Binding ActivadorAnimacionImg}" Value="True"/>
+                    </MultiTrigger.Conditions>
+                    <MultiTrigger.EnterActions>
+                        <disparador:TeliminarNota activacion="True"/>
+                    </MultiTrigger.EnterActions>
+                    <MultiTrigger.ExitActions>
+                        <disparador:TeliminarNota activacion="True"/>
+                    </MultiTrigger.ExitActions>
+                </MultiTrigger>
+            </Label.Triggers>
+        </Label>
 
         <Button Text="+"
                 HeightRequest="80"

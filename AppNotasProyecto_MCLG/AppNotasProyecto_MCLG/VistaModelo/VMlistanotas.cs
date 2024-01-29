@@ -56,6 +56,8 @@ namespace AppNotasProyecto_MCLG.VistaModelo
 
 		public async Task ActualizarNota(Mnota1 parametros)
 		{
+			ActivadorAnimacionImg = true;
+
 			await Navigation.PushAsync(new EditarNota(parametros));
 		}
 		public async Task<bool> MostrarMenuEmergente()
@@ -70,6 +72,9 @@ namespace AppNotasProyecto_MCLG.VistaModelo
 			get { return _activadorAnimacionImg; }
 			set { SetValue(ref _activadorAnimacionImg, value); }
 		}
+
+
+
 		public async Task EliminrNota(Mnota1 notaTitulo)
 		{
 			bool respuesta = await MostrarMenuEmergente();
@@ -91,7 +96,7 @@ namespace AppNotasProyecto_MCLG.VistaModelo
 			}
 		}
 
-
+		
 		#endregion
 		#region COMANDOS
 		public ICommand IrRegistrocommand => new Command(async () => await IrRegistro());

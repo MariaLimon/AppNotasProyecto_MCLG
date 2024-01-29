@@ -1,4 +1,5 @@
-﻿using AppNotasProyecto_MCLG.VistaModelo;
+﻿using AppNotasProyecto_MCLG.Datos;
+using AppNotasProyecto_MCLG.VistaModelo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
