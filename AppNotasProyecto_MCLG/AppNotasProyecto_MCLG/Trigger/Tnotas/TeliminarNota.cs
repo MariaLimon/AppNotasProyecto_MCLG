@@ -11,11 +11,12 @@ namespace AppNotasProyecto_MCLG.Trigger.Tnotas
 		public bool activacion { get; set; }
 		protected override async void Invoke(Label sender)
 		{
-			
+			sender.IsVisible = true;
 			if (activacion == true)
-			{
+			{	
 				sender.BackgroundColor = Color.Red;
-				await sender.RelRotateTo(360, 5000, Easing.BounceOut);
+
+				await sender.FadeTo(0.5, 1000, Easing.Linear);
 
 				await Task.Delay(3000);
 				sender.IsVisible = false;

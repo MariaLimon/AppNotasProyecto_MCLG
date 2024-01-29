@@ -15,7 +15,7 @@
             </Entry>
             <Editor Placeholder="Empiece a escribir"
                     AutoSize="TextChanges"
-                    HeightRequest="500"
+                    HeightRequest="350"
                     Text="{Binding TxtDescripcion}">
                 
             </Editor>
