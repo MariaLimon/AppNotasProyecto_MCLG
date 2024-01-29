@@ -37,6 +37,12 @@ namespace AppNotasProyecto_MCLG.VistaModelo
 		{
 			await Navigation.PopAsync();
 		}
+		bool _activadorAnimacionImgED;
+		public bool ActivadorAnimacionImgED
+		{
+			get { return _activadorAnimacionImgED; }
+			set { SetValue(ref _activadorAnimacionImgED, value); }
+		}
 		public async Task ActualizarNota()
 		{
 
@@ -49,6 +55,7 @@ namespace AppNotasProyecto_MCLG.VistaModelo
 
 			var dataAccess = new Dnota();
 			await dataAccess.ActualizarNota(notaA);
+			ActivadorAnimacionImgED = true;
 			await Volver();
 		}
 		#endregion

@@ -63,7 +63,7 @@
             </CollectionView.ItemTemplate>
             
         </CollectionView>
-        <Label Text="{Binding Titulo}">
+        <Label Text="Nota eliminada" TextColor="White">
             <Label.Triggers>
                 <MultiTrigger TargetType="Label">
                     <MultiTrigger.Conditions>
@@ -74,6 +74,36 @@
                     </MultiTrigger.EnterActions>
                     <MultiTrigger.ExitActions>
                         <disparador:TeliminarNota activacion="True"/>
+                    </MultiTrigger.ExitActions>
+                </MultiTrigger>
+            </Label.Triggers>
+        </Label>
+        <Label Text="Nota editada" TextColor="White">
+            <Label.Triggers>
+                <MultiTrigger TargetType="Label">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition Binding="{Binding ActivadorAnimacionImgED}" Value="True"/>
+                    </MultiTrigger.Conditions>
+                    <MultiTrigger.EnterActions>
+                        <disparador:TeditarNota activacion="True"/>
+                    </MultiTrigger.EnterActions>
+                    <MultiTrigger.ExitActions>
+                        <disparador:TeditarNota activacion="True"/>
+                    </MultiTrigger.ExitActions>
+                </MultiTrigger>
+            </Label.Triggers>
+        </Label>
+        <Label Text="Nota agregada" TextColor="White" >
+            <Label.Triggers>
+                <MultiTrigger TargetType="Label">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition Binding="{Binding ActivadorAnimacionImgAG}" Value="True"/>
+                    </MultiTrigger.Conditions>
+                    <MultiTrigger.EnterActions>
+                        <disparador:TagregarNota activacion="True"/>
+                    </MultiTrigger.EnterActions>
+                    <MultiTrigger.ExitActions>
+                        <disparador:TagregarNota activacion="True"/>
                     </MultiTrigger.ExitActions>
                 </MultiTrigger>
             </Label.Triggers>

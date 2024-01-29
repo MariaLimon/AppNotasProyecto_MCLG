@@ -39,7 +39,12 @@ namespace AppNotasProyecto_MCLG.VistaModelo
 		{
 			await Navigation.PopAsync();
 		}
-
+		bool _activadorAnimacionImgAG;
+		public bool ActivadorAnimacionImgAG
+		{
+			get { return _activadorAnimacionImgAG; }
+			set { SetValue(ref _activadorAnimacionImgAG, value); }
+		}
 		public async Task Insertar()
 		{
 			var funcion = new Dnota();
@@ -49,8 +54,10 @@ namespace AppNotasProyecto_MCLG.VistaModelo
 			parametros.Descripcion = TxtDescripcion;
 			
 			await funcion.InsertarNota(parametros);
+			ActivadorAnimacionImgAG = true;
 			await Volver();
 		}
+		
 		#endregion
 		#region COMANDOS
 		public ICommand InsertarCommand => new Command(async () => await Insertar());

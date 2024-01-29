@@ -6,15 +6,15 @@ using Xamarin.Forms;
 
 namespace AppNotasProyecto_MCLG.Trigger.Tnotas
 {
-    public class TeliminarNota : TriggerAction<Label>
-    {
+    public class TeditarNota : TriggerAction<Label>
+	{
 		public bool activacion { get; set; }
 		protected override async void Invoke(Label sender)
 		{
-			
+
 			if (activacion == true)
 			{
-				sender.BackgroundColor = Color.Red;
+				sender.BackgroundColor = Color.Orange;
 				await sender.RelRotateTo(360, 5000, Easing.BounceOut);
 
 				await Task.Delay(3000);
