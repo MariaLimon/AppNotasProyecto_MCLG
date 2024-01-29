@@ -11,7 +11,6 @@ namespace AppNotasProyecto_MCLG.Trigger.Tnotas
 		public bool activacion { get; set; }
 		protected override async void Invoke(Label sender)
 		{
-			sender.IsVisible = true;
 			if (activacion == true)
 			{	
 				sender.BackgroundColor = Color.Red;

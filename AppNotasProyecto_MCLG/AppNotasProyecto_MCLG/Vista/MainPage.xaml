@@ -9,12 +9,7 @@
         <Frame BackgroundColor="#FFF470" Padding="10" CornerRadius="0">
             <Label Text="Notas" HorizontalTextAlignment="Center" TextColor="Black" FontSize="25"/>
         </Frame>
-        <Frame CornerRadius="10" BackgroundColor="#FFF9B3" Padding="5" Margin="10">
-            <SearchBar Placeholder="Buscar" >
-
-            </SearchBar>
-        </Frame>
-        
+       
         <CollectionView
             ItemsSource="{Binding ListaNotas}"
             Margin="0,0,0,0"
